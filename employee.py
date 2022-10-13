@@ -5,21 +5,24 @@ class Employee:
 
     
 
-    def __init__(self, name, salary_type="", commision = ""):
+    def __init__(self, name, salary_type, commision = ""):
         self.name = name
         self.salary_type =  salary_type
         self.commision = commision
 #Default value of commision = "" so when totalCommision() is applied to it, it returns an errora
     def get_pay(self):
-        return self.salary_type.getPaycheck() + self.commision.totalCommision()
+        if self.commision == "":
+            return self.salary_type.getPaycheck()
+        else:
+            return self.salary_type.getPaycheck() + self.commision.totalCommision()
 
     def __str__(self):
 
         if self.commision == "":
-            print( f"{self.name} works on a {self.salary_type.__str__()}. Their total pay is {self.get_pay()}")
+            print( f"{self.name} works on a {self.salary_type.__str__()}. Their total pay is {self.get_pay()}. \n")
 
         else:
-            print( f"{self.name} works on a {self.salary_type.__str__()} and receives a {self.commision.__str__()}. Their total pay is {self.getPay()} ")
+            print( f"{self.name} works on a {self.salary_type.__str__()} and receives a {self.commision.__str__()}. Their total pay is {self.get_pay()}. \n")
 
 
 
@@ -52,7 +55,7 @@ class MonthlySalary(Salary):
         super().__init__(paycheck)
 
     def __str__(self):
-        return f"monthly salary of {self.paycheck}."
+        return f"monthly salary of {self.paycheck}"
 
         
 
@@ -89,11 +92,19 @@ class Commision:
     def totalCommision(self):
         return self.commision_salary
 
+ # In case employee has no commision.
+    def zeroCommision(self):
+        if (self.commision_salary == ""):
+            return 0
+
+
+
 class BonusCommision(Commision):
     def __init__(self, commision_salary):
-        super.__init__(commision_salary)
+        super().__init__(commision_salary)
 
     def  __str__(self):
+        self.zeroCommision()
         return f"bonus commision of {self.commision_salary}"
 
 
@@ -102,13 +113,14 @@ class BonusCommision(Commision):
 class ContractCommision(Commision):
 
     def __init__(self, commision_salary, numberOfContracts):
-        super.__init__(commision_salary)
+        super().__init__(commision_salary)
         self.numberOfContracts = numberOfContracts
 
     def __str__(self):
-        return f"commision for {self.numberOfContracts} contract(s) at {self.commision_salary}/contract."
+        return f"commision for {self.numberOfContracts} contract(s) at {self.commision_salary}/contract"
 
     def totalCommision(self):
+        self.zeroCommision()
         return self.numberOfContracts * self.commision_salary
 
 
@@ -150,12 +162,6 @@ robbie.__str__()
 
 ariel = Employee('Ariel', HourlySalary(30, 120), BonusCommision(600))
 ariel.__str__()
-
-
-test = Employee("test")
-test.__str__()
-
-#add all employees to a list and carry out a for loop and execute all commands.
 
 
 
