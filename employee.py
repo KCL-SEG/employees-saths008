@@ -19,10 +19,10 @@ class Employee:
     def __str__(self):
 
         if self.commision == "":
-            print( f"{self.name} works on a {self.salary_type.__str__()}. Their total pay is {self.get_pay()}. \n")
+            return f"{self.name} works on a {self.salary_type.__str__()}. Their total pay is {self.get_pay()}."
 
         else:
-            print( f"{self.name} works on a {self.salary_type.__str__()} and receives a {self.commision.__str__()}. Their total pay is {self.get_pay()}. \n")
+            return f"{self.name} works on a {self.salary_type.__str__()} and receives a {self.commision.__str__()}. Their total pay is {self.get_pay()}."
 
 
 
