@@ -5,27 +5,29 @@ class Employee:
 
     
 
-    def __init__(self, name, salary_type, commision = ""):
+    def __init__(self, name, salary_type, commission = ""):
         self.name = name
         self.salary_type =  salary_type
-        self.commision = commision
-#Default value of commision = "" so when totalCommision() is applied to it, it returns an errora
+        self.commission = commission
+#Default value of commission = "" so when totalCommission() is applied to it, it returns an errora
     def get_pay(self):
-        if self.commision == "":
+        if self.commission == "":
             return self.salary_type.getPaycheck()
         else:
-            return self.salary_type.getPaycheck() + self.commision.totalCommision()
+            return self.salary_type.getPaycheck() + self.commission.totalCommission()
+
+
 
     def __str__(self):
 
-        if self.commision == "":
-            return f"{self.name} works on a {self.salary_type.__str__()}.  Their total pay is {self.get_pay()}."
+        if self.commission == "":
+            print(f'"{self.name} works on a {self.salary_type.__str__()}.  Their total pay is {self.get_pay()}."')
+            return f'"{self.name} works on a {self.salary_type.__str__()}.  Their total pay is {self.get_pay()}."'
 
         else:
-            return f"{self.name} works on a {self.salary_type.__str__()} and receives a {self.commision.__str__()}.  Their total pay is {self.get_pay()}."
-
-
-
+            print(f'"{self.name} works on a {self.salary_type.__str__()} and receives a {self.commission.__str__()}.  Their total pay is {self.get_pay()}."')
+            return f'"{self.name} works on a {self.salary_type.__str__()} and receives a {self.commission.__str__()}.  Their total pay is {self.get_pay()}."'
+        
 
 
 
@@ -84,44 +86,44 @@ class HourlySalary(Salary):
     # Billie works on a monthly salary of 4000.  Their total pay is 4000.
 
 
-class Commision:
-    def __init__(self, commision_salary):
-        self.commision_salary = commision_salary
+class Commission:
+    def __init__(self, commission_salary):
+        self.commission_salary = commission_salary
 
     
-    def totalCommision(self):
-        return self.commision_salary
+    def totalCommission(self):
+        return self.commission_salary
 
- # In case employee has no commision.
-    def zeroCommision(self):
-        if (self.commision_salary == ""):
+ # In case employee has no commission.
+    def zeroCommission(self):
+        if (self.commission_salary == ""):
             return 0
 
 
 
-class BonusCommision(Commision):
-    def __init__(self, commision_salary):
-        super().__init__(commision_salary)
+class BonusCommission(Commission):
+    def __init__(self, commission_salary):
+        super().__init__(commission_salary)
 
     def  __str__(self):
-        self.zeroCommision()
-        return f"bonus commision of {self.commision_salary}"
+        self.zeroCommission()
+        return f"bonus commission of {self.commission_salary}"
 
 
 
 
-class ContractCommision(Commision):
+class ContractCommission(Commission):
 
-    def __init__(self, commision_salary, numberOfContracts):
-        super().__init__(commision_salary)
+    def __init__(self, commission_salary, numberOfContracts):
+        super().__init__(commission_salary)
         self.numberOfContracts = numberOfContracts
 
     def __str__(self):
-        return f"commision for {self.numberOfContracts} contract(s) at {self.commision_salary}/contract"
+        return f"commission for {self.numberOfContracts} contract(s) at {self.commission_salary}/contract"
 
-    def totalCommision(self):
-        self.zeroCommision()
-        return self.numberOfContracts * self.commision_salary
+    def totalCommission(self):
+        self.zeroCommission()
+        return self.numberOfContracts * self.commission_salary
 
 
 
@@ -147,20 +149,20 @@ billie.__str__()
 charlie = Employee('Charlie', HourlySalary(25, 100))
 charlie.__str__()
     # Renee works on a monthly salary of 3000 and receives a commission for 4 contract(s) at 200/contract.  Their total pay is 3800.
-renee = Employee('Renee', MonthlySalary(3000), ContractCommision(200, 4))
+renee = Employee('Renee', MonthlySalary(3000), ContractCommission(200, 4))
 renee.__str__()
 
     # Jan works on a contract of 150 hours at 25/hour and receives a commission for 3 contract(s) at 220/contract.  Their total pay is 4410.
-jan = Employee('Jan', HourlySalary(25, 150), ContractCommision(220, 3))
+jan = Employee('Jan', HourlySalary(25, 150), ContractCommission(220, 3))
 jan.__str__()
     # Robbie works on a monthly salary of 2000 and receives a bonus commission of 1500.  Their total pay is 3500.
 
-robbie = Employee('Robbie', MonthlySalary(2000), BonusCommision(1500))
+robbie = Employee('Robbie', MonthlySalary(2000), BonusCommission(1500))
 robbie.__str__()
 
     # Ariel works on a contract of 120 hours at 30/hour and receives a bonus commission of 600. 
 
-ariel = Employee('Ariel', HourlySalary(30, 120), BonusCommision(600))
+ariel = Employee('Ariel', HourlySalary(30, 120), BonusCommission(600))
 ariel.__str__()
 
 
