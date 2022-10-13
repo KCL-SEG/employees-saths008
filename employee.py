@@ -53,7 +53,7 @@ class Employee:
 
     def __str__(self):
 
-         print (f"'{self.name} works on a {self.salary_type.__str__()}'" + self.strforHasCommission() +  f" Their total pay is {self.get_pay()}.'")
+         print (f"'{self.name} works on a {self.salary_type.__str__()}" + f"{self.strforHasCommission()}" +  f" Their total pay is {self.get_pay()}.'")
 
 
     
@@ -114,13 +114,18 @@ class Commission:
 
 
 
+    def __str__(self):
+        if (type(self) is ContractCommission):
+            return f"commission for {self.numberOfContracts} contract(s) at {self.commission_salary}/contract"
+
+        elif (type(self) is BonusCommission):
+            return f"bonus commission of {self.commission_salary}"
+
+
 """All bonus commissions eg. 3 contracts at £100 each"""
 class BonusCommission(Commission):
     def __init__(self, commission_salary):
         super().__init__(commission_salary)
-
-    def  __str__(self):
-        return f"bonus commission of {self.commission_salary}"
 
 
 """All contract commissions eg. 3 contracts at £100 each"""
@@ -129,9 +134,6 @@ class ContractCommission(Commission):
     def __init__(self, commission_salary, numberOfContracts):
         super().__init__(commission_salary)
         self.numberOfContracts = numberOfContracts
-
-    def __str__(self):
-        return f"commission for {self.numberOfContracts} contract(s) at {self.commission_salary}/contract"
 
     def totalCommission(self):
         return self.numberOfContracts * self.commission_salary
