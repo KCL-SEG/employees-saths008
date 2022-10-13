@@ -158,7 +158,7 @@ jan.__str__()
 robbie = Employee('Robbie', MonthlySalary(2000), BonusCommision(1500))
 robbie.__str__()
 
-    # Ariel works on a contract of 120 hours at 30/hour and receives a bonus commission of 600.  Their total pay is 4200.
+    # Ariel works on a contract of 120 hours at 30/hour and receives a bonus commission of 600. 
 
 ariel = Employee('Ariel', HourlySalary(30, 120), BonusCommision(600))
 ariel.__str__()
