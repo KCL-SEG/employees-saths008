@@ -53,6 +53,8 @@ class Employee:
 
     def __str__(self):
 
+
+         return (f"'{self.name} works on a {self.salary_type.__str__()}" + f"{self.strforHasCommission()}" +  f" Their total pay is {self.get_pay()}.'")
          print (f"'{self.name} works on a {self.salary_type.__str__()}" + f"{self.strforHasCommission()}" +  f" Their total pay is {self.get_pay()}.'")
 
 
