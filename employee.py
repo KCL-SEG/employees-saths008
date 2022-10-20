@@ -10,6 +10,7 @@ class Employee:
         self.commission = commission
         self.hasCommission = hasCommission
         self.setHasCommission()
+        //test
 
 
 
