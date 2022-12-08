@@ -2,7 +2,7 @@
 
 class Employee:
 
-    #Test Commit
+    #Test Commits
 
     def __init__(self, name, salary_type, commission = "", hasCommission = True):
         self.name = name
