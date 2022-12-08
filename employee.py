@@ -55,7 +55,9 @@ class Employee:
 
     def __str__(self):
 
-         print (f"'{self.name} works on a {self.salary_type.__str__()}" + f"{self.strforHasCommission()}" +  f" Their total pay is {self.get_pay()}.'")
+         print (f"{self.name} works on a {self.salary_type.__str__()}" + f"{self.strforHasCommission()}" +  f"  Their total pay is {self.get_pay()}.")
+         return (f"{self.name} works on a {self.salary_type.__str__()}" + f"{self.strforHasCommission()}" +  f"  Their total pay is {self.get_pay()}.")
+         
 
 
     
@@ -177,7 +179,8 @@ ariel = Employee('Ariel', HourlySalary(30, 120), BonusCommission(600))
 
 
 
-# string = 'Billie works on a monthly salary of 4000.  Their total pay is 4000.'
+
+# print(type(str(billie)))
 # print(str(billie))
 # assert str(billie) == string
 
